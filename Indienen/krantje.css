@@ -1,0 +1,251 @@
+/* Algemeen */
+
+body {
+    font-family: "Segoe UI", Verdana;
+    color: #111827;
+    margin: 1rem;
+    background-color: #f7f8fa;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "article"
+        "aside"
+        "nav"
+        "footer";
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+
+@media (min-width: 900px)
+{
+    body {
+        grid-template-columns: 1fr 2.5fr 1.5fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "header header header"
+            "nav article  aside"
+            "footer footer footer";
+        row-gap: 1rem;
+        column-gap: 1rem;
+    }
+}
+
+/* Hoofding */
+header {grid-area: header;}
+
+.flexheader
+{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #7aa7d4;
+    gap: 1rem;
+    border-radius: 8px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    box-shadow: 2px 2px 2px #474747;
+}
+
+header h1 {font-size: 1.5rem;}
+
+/* Linker zijbalk */
+nav {
+    grid-area: nav;
+    align-self: start;
+    background-color: white;
+    border-radius: 8px;
+    border-bottom: 1px solid #474747;
+    padding: 1rem;
+}
+
+@media (min-width: 900px)
+{
+    nav {
+        position: sticky;
+        top: 1rem;
+    }
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: #2563eb;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+nav a:hover{
+    background-color: #eef2ff;
+    border-radius: 8px;
+}
+
+/* Inhoud */
+article {
+    grid-area: article;
+    background-color: white;
+    border-radius: 8px;
+    border-bottom: 1px solid #474747;
+    padding: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+article time {
+    display:block;
+    text-align: right;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+article p {text-align: justify;}
+
+p.nadruk:first-letter {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Rechter zijbalk */
+
+aside {
+    grid-area: aside;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 1rem;
+    max-width: 100%;
+}
+
+@media (min-width: 900px)
+{
+    aside {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-self: start;
+        position: sticky;
+        top: 1rem;
+        width: 100%;}
+}
+
+/* Gerelateerde artikels */
+
+.artikels {
+    background-color: white;
+    border-radius: 8px;
+    border-bottom: 1px solid #474747;
+    padding: 1rem;
+}
+
+.artikels a{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    text-decoration: none;
+    color: #111827;
+    padding: 0.5rem;
+}
+
+.artikels a:hover {
+    background-color: #eef2ff;
+    border-radius: 8px;
+}
+
+.artikels ul{
+    list-style: none;
+    padding: 0.5rem;
+}
+
+.artikels time {
+    color: #6b7280;
+    font-size: 0.9rem;
+    justify-self: end;
+    white-space: nowrap;
+}
+
+
+/* Weerbericht */
+
+aside section:nth-of-type(2)
+{
+    background-color: white;
+    border-radius: 8px;
+    border-bottom: 1px solid #474747;
+    padding: 1rem;
+}
+
+aside table {
+    width: 100%;
+    table-layout: fixed;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+aside th,
+aside td {
+    border: 1px solid #ccc;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+aside table th,
+aside table td {
+    text-align: center;
+}
+
+aside table thead tr:first-child th:first-child {
+    text-align: left;
+}
+
+aside table tbody th {
+    text-align: left;
+}
+
+aside tbody tr:nth-child(2n+1) {background-color: #c5d4e3}
+
+aside tbody td:nth-child(2) {background-image: url("zon.png")}
+
+aside tbody td:nth-child(3) {background-image: url("maan.png");}
+
+aside tbody td:nth-child(2),
+aside tbody td:nth-child(3) {
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: left 0.5rem center;
+}
+
+aside tbody td:nth-child(2):after, aside tbody td:nth-child(3):after {
+    content: "°C";
+}
+
+    /* Footer */
+.flexfooter {
+    grid-area: footer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: #6b7280;
+    margin-top: 1rem;
+    padding: 0.75rem;
+}
